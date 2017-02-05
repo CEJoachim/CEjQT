@@ -1,5 +1,6 @@
 # CEjQT
 Here I test stuff with OpenGL and QT and other stuff. I have only tested this on my machine on Visual Studio Community 2015 Release x86/windows 10.
+You can see progress on youtube here is the playlist: https://www.youtube.com/playlist?list=PLQCHNyv3Q1i7sRsZRfak4yGLfkoTCABvc
 
 # Embedding Python / Anaconda
 I am also working on embedding a python interpreter.
