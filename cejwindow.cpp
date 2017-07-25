@@ -11,10 +11,14 @@
 #include "cepy.hpp"
 #include <python.h>
 #include <QKeyEvent>
-MainWindow::MainWindow(CePy *cePy, GLWidget *glWidget):
+#include <QWidget>
+
+
+MainWindow::MainWindow(CePy *cePy, GLWidget *glWidget, QApplication *app):
 	_mousePressed(false),
 	_mousePosition(QPoint())
 {
+	mainApp = app;
 	//setWindowFlags(windowFlags() | Qt::FramelessWindowHint);
 	QMenuBar *menuBar = new QMenuBar;
 	QMenu *menuWindow = menuBar->addMenu(tr("&File"));
@@ -57,5 +61,23 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *e)
 	if (e->button() == Qt::LeftButton) {
 		//_mousePressed = false;
 		//_mousePosition = QPoint();
+	}
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *e)
+{
+	if (e->key() == Qt::Key_Escape)
+	{
+		close();
+	}
+	else if (e->key() == Qt::Key_Enter)
+	{
+		//printf("Enter Pressed\n");
+		//Q_EMIT this->enterKeyPressed();
+	}
+	else
+	{
+		QWidget::keyPressEvent(e);
+
 	}
 }

@@ -21,7 +21,7 @@ public:
 	PyObject *pValue;
 	int runModule(char *module, char *function, char *argv[]);
 	int CePy::execScript(const char *script);
-	static PyObject* CePy::emb_numargs(PyObject *self, PyObject *args);
+	
 
 	static QSlider *lineSlider;
 	QSlider *vertSlider;

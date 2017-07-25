@@ -6,19 +6,24 @@
 
 static int numargs = 1;
 
+void troll()
+{
+	printf("Troll is here!");
+}
+
 /* Return the number of arguments of the application command line */
-PyObject*
-CePy::emb_numargs(PyObject *self, PyObject *args)
+static PyObject*
+emb_numargs(PyObject *self, PyObject *args)
 {
 	PyObject *object;
 	int a;
 	int *b;
 
-	if (!PyArg_ParseTuple(args, "i|i:numargs", a, &b))
+	if (!PyArg_ParseTuple(args, "i|i:numargs", &a, &b))
 		return NULL;
+	numargs = int(a);
+	//pyCalls();
 	
-	pyCalls();
-	printf("a: %i b:%i", int(a),b);
 	//glWidget->setLineWidth(int(a));
 	//lineSlider->setValue(int(a));
 	
@@ -33,19 +38,19 @@ void CePy::pyCalls()
 PyObject*
 emb_dog(PyObject *self, PyObject *args)
 {
-	printf("Hello In C++");
+	troll();
 	if (!PyArg_ParseTuple(args, ":dog"))
 		return NULL;
+	printf("Numargs = %i", numargs);
 	return PyLong_FromLong(numargs);
 }
 
 PyMethodDef EmbMethods[] = {
-	{ "numargs", CePy::emb_numargs, METH_VARARGS,
+	{ "numargs", emb_numargs, METH_VARARGS,
 	"Return the number of arguments received by the process." },
-	{ NULL, NULL, 1, NULL },
-	{ "numargs", emb_dog, METH_VARARGS,
+	{ "dog", emb_dog, METH_VARARGS,
 	"Return the number of arguments received by the process." },
-	{ NULL, NULL, 1, NULL },
+	{ NULL, NULL, 0, NULL },
 };
 
 PyModuleDef EmbModule = {

@@ -14,7 +14,8 @@ int main(int argc, char *argv[])
 	CePy cePy(argc,argv);
 	char *module = "pythonCode.py";
 	char *function = "multiply";
-	
+	char *pyArgs[2] = { "3","15" };
+	cePy.runModule("pythonCode.py", "multiply", pyArgs);
 	
 
 	
@@ -22,8 +23,7 @@ int main(int argc, char *argv[])
 	QApplication app(argc, argv);
 	app.setStyle("fusion");
 	GLWidget glWidget = new GLWidget;
-	char *pyArgs[1] = { "glWidget" };
-	cePy.runModule("pythonCode.py", "printClass", pyArgs);
+	
 	//glWidget.setLineWidth(0);
 	//glWidget.setVertSize(0);
 
@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 	}
 	QSurfaceFormat::setDefaultFormat(fmt);
 
-	MainWindow mainWindow(&cePy, &glWidget);
+	MainWindow mainWindow(&cePy, &glWidget, &app);
 	mainWindow.setStyleSheet("background-color: rgb(50,50,50)");
 
 	

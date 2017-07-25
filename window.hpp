@@ -25,8 +25,7 @@ public:
 	void executePythonScript();
 	CePy *pythonShell;
 	//GLWidget *glWidget;
-protected:
-	void keyPressEvent(QKeyEvent *event) Q_DECL_OVERRIDE;
+
 
 private Q_SLOTS:
 	QSlider *createSlider();
